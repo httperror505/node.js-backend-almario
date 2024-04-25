@@ -41,11 +41,26 @@ router.post('/DocuReg', async (req, res) =>{
 
 
 //GET ALL THE DOCUMENTS
-router.get('/documentlist', authenticateToken, (req, res) => {
+router.get('/researches', (req, res) => {
 
     try {
 
-        db.query('SELECT document_id, document_name ,document_type,upload_date,project_id FROM documents', (err , result)=> {
+        db.query(`
+SELECT
+    d.researches_id,
+    d.title,
+    d.author,
+    d.publish_date,
+    d.abstract,
+    c.category_name,
+    dep.department_name
+
+FROM
+    researches d
+JOIN
+    category c ON d.category_id = c.category_id
+JOIN
+    department dep ON d.department_id = dep.department_id`, (err , result)=> {
             
             if(err){
                 console.error('Error fetching items:', err);
