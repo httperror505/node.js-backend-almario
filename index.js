@@ -38,13 +38,12 @@ app.post('/create', upload.single('file'), (req, res) => {
     return res.status(400).json({ Error: 'No file uploaded' });
   }
 
-  const sql = "INSERT INTO researches (`title`,`author`,`publish_date`,`abstract`,`category_id`,`file_name`,`department_id`) VALUES (?,?,?,?,?,?,?)";
+  const sql = "INSERT INTO researches (`title`,`author`,`publish_date`,`abstract`,`file_name`,`department_id`) VALUES (?,?,?,?,?,?)";
   const values = [
     req.body.title,
     req.body.author,
     req.body.publish_date,
     req.body.abstract,
-    req.body.category_id,
     req.file.filename,
     req.body.department_id // Fixed department_id access
   ];
