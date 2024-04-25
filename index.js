@@ -57,15 +57,15 @@ const storage = multer.diskStorage({
   })
    
   app.post('/create',upload.single('file'), (req, res) => {
-      const sql = "INSERT INTO publication (`title`,`authors`,`abstract`,`publication_type`,`citation`,`docs`,`id`) VALUES (?)"; 
+      const sql = "INSERT INTO researches (`title`,`author`,`publish_date`,`abstract`,`category_id`,`filename`,`department_id`) VALUES (?)"; 
       const values = [
           req.body.title,
-          req.body.authors,
+          req.body.author,
+          req.body.publish_date,
           req.body.abstract,
-          req.body.publication_type,
-          req.body.citation,
+          req.body.category_id,
           req.file.filename,
-          req.id
+          req.department_id
       ]
       db.query(sql, [values], (err, result) => {
           if(err) return res.json({Error: "Error singup query"});
