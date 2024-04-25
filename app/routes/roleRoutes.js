@@ -24,7 +24,7 @@ router.post('/RoleRegister',authenticateToken, async (req, res) =>{
     });
     
 
-    router.get('/roles',authenticateToken,  (req, res) => {
+    router.get('/roles',  (req, res) => {
 
         try {
     
