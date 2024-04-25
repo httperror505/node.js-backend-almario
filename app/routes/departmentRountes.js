@@ -41,7 +41,7 @@ router.post('/deptreg', async (req, res) =>{
 
 
 //GET ALL THE USERS
-router.get('/departments', authenticateToken, (req, res) => {
+router.get('/departments', (req, res) => {
 
     try {
 
