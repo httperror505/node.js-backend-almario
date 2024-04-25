@@ -67,7 +67,7 @@ const storage = multer.diskStorage({
           req.body.abstract,
           req.body.category_id,
           req.file.filename,
-          req.department_id
+          req.body.department_id
       ]
       db.query(sql, [values], (err, result) => {
           if(err) return res.json({Error: "Error singup query"});
