@@ -57,7 +57,7 @@ const storage = multer.diskStorage({
   })
    
   app.post('/create',upload.single('file'), (req, res) => {
-      const sql = "INSERT INTO researches (`title`,`author`,`publish_date`,`abstract`,`category_id`,`filename`,`department_id`) VALUES (?)"; 
+      const sql = "INSERT INTO researches (`title`,`author`,`publish_date`,`abstract`,`category_id`,`file_name`,`department_id`) VALUES (?,?,?,?,?,?,?)"; 
       const values = [
           req.body.title,
           req.body.author,
