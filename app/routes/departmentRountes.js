@@ -45,7 +45,7 @@ router.get('/departments', (req, res) => {
 
     try {
 
-        db.query('SELECT department_id, department_name FROM departments', (err , result)=> {
+        db.query('SELECT department_id, department_name FROM department', (err , result)=> {
             
             if(err){
                 console.error('Error fetching items:', err);
