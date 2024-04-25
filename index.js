@@ -33,6 +33,11 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 // Handle research creation
 app.post('/create', upload.single('file'), (req, res) => {
+  if (!req.file) {
+    console.error('No file uploaded');
+    return res.status(400).json({ Error: 'No file uploaded' });
+  }
+
   const sql = "INSERT INTO researches (`title`,`author`,`publish_date`,`abstract`,`category_id`,`file_name`,`department_id`) VALUES (?,?,?,?,?,?,?)";
   const values = [
     req.body.title,
@@ -43,6 +48,7 @@ app.post('/create', upload.single('file'), (req, res) => {
     req.file.filename,
     req.body.department_id // Fixed department_id access
   ];
+
   db.query(sql, values, (err, result) => {
     if (err) {
       console.error('Error creating research:', err);
@@ -51,6 +57,7 @@ app.post('/create', upload.single('file'), (req, res) => {
     return res.json({ Status: 'Success' });
   });
 });
+
 
 // Import and use routes
 const UsersRoutes = require('./app/routes/user');
