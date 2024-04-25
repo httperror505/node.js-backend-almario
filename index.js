@@ -17,6 +17,7 @@ const departmentRoutes = require('./app/routes/departmentRountes');
 const testAPIRouter = require('./app/routes/testAPI');
 const attachementRoutes = require('./app/routes/attachmentsRoutes');
 const projectRoutes = require('./app/routes/ProjectRoutes');
+const researchesRoutes = require('./app/routes/researches');
 
 
 app.use("/assets",express.static("assets"));
@@ -35,6 +36,7 @@ app.use('/api', projectRoutes);
 app.use("/testAPI",testAPIRouter);
 app.use("/api",departmentRoutes);
 app.use("/api",attachementRoutes);
+app.use("/api",researchesRoutes);
 
 
 
