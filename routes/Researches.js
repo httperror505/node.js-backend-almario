@@ -33,7 +33,7 @@ const storage = multer.diskStorage({
           req.department_id
       ]
       db.query(sql, [values], (err, result) => {
-          if(err) return res.json({Error: "Error singup query"});
+          if(err) return res.json({Error: "Error signup query"});
           return res.json({Status: "Success"});
       })
   })
